@@ -20,7 +20,7 @@ spec:
       terminationGracePeriodSeconds: 30
       initContainers:
       - name: init-config
-        image: solsson/kafka-initutils@sha256:18bf01c2c756b550103a99b3c14f741acccea106072cd37155c6d24be4edd6e2
+        image: docker.service:5000/solsson/kafka-initutils:bdec
         env:
         - name: NODE_NAME
           valueFrom:
@@ -42,7 +42,7 @@ spec:
           mountPath: /etc/kafka
       containers:
       - name: broker
-        image: solsson/kafka:1.0.2@sha256:7fdb326994bcde133c777d888d06863b7c1a0e80f043582816715d76643ab789
+        image: docker.service:5000/solsson/kafka:1.0.2
         env:
         - name: KAFKA_LOG4J_OPTS
           value: -Dlog4j.configuration=file:/etc/kafka/log4j.properties
@@ -85,4 +85,4 @@ spec:
       storageClassName: kafka-broker
       resources:
         requests:
-          storage: 200Gi
+          storage: 5Gi

@@ -1,0 +1,14 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: kafka-zookeeper-$ITEM
+  labels:
+    type: local
+spec:
+  storageClassName: kafka-zookeeper
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/zookeper"
